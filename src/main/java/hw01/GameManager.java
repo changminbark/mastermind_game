@@ -27,9 +27,15 @@ enum GameState {
 }
 
 public class GameManager {
+    /**
+     * A GameState property that determines the current state of the game
+     */
     private GameState state;
 
 
+    /**
+     * A GameManager class constructor that initializes the state as NOT_READY
+     */
     public GameManager() {
         this.state = GameState.NOT_READY;
     }
