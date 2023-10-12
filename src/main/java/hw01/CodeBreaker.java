@@ -20,7 +20,54 @@
  *
  * ****************************************
  */
+
 package hw01;
 
+import java.util.Scanner;
+
+/** The CodeBreaker class is responsible for taking the user's input and storing it as the secret code. */
 public class CodeBreaker {
+
+    /** The secret code. */
+    private String secretCode;
+
+    /** The constructor for the CodeBreaker class. */
+    public CodeBreaker() {
+        secretCode = "";
+    }
+
+    /** The method to take the user's input and store it as the secret code. */
+    public String takeInput() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the secret code
+        boolean isDone = false;
+        while (!isDone) {
+            String input = scanner.nextLine();
+
+            // Check if the input is valid
+            if (input.length() != 4) {
+                System.out.println("Invalid input. Please enter a 4-digit code.");
+            }
+            // Check if the input is within the range [1-6]
+            else if (input.contains("0") || input.contains("7") || input.contains("8") || input.contains("9")) {
+                System.out.println("Invalid input. Please enter a 4-digit code.");
+            }else {
+                // Check if the input is a number
+                try {
+                    Integer.parseInt(input);
+                    secretCode = input;
+                    isDone = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Please enter a 4-digit code.");
+                }
+            }
+        }
+        return secretCode;
+    }
+
+    /** The method to get the secret code. */
+    public String getSecretCode() {
+        return secretCode;
+    }
 }
