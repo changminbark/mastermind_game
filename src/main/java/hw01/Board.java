@@ -45,10 +45,17 @@ public class Board {
     private int remainingGuesses;
 
     /**
+     * The secret code.
+     */
+    private String secretCode;
+
+    /**
      * The constructor for the Board class.
      * It initializes the current guess pegs, current scoring pegs, and the number of remaining guesses.
+     * @param codeBreaker The CodeBreaker object containing the secret code.
      */
-    public Board() {
+    public Board(CodeBreaker codeBreaker) {
+        this.secretCode = codeBreaker.getSecretCode();
         currentGuessPegs = "";
         currentScoringPegs = "";
         remainingGuesses = 12;
@@ -85,7 +92,7 @@ public class Board {
      */
     public void displayBoard() {
         System.out.println("Guess my code, using numbers between 1 and 6. You have " + remainingGuesses + " guesses.");
-        System.out.println("Guess " + (12 - remainingGuesses) + ": " + currentGuessPegs);
+        System.out.println("Guess " + (12 - remainingGuesses) + ": " + secretCode);
         System.out.println(currentGuessPegs + " --> " + currentScoringPegs + " Try again. " + remainingGuesses + " guesses left.");
     }
 
