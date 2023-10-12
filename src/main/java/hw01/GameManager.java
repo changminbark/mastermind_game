@@ -26,7 +26,7 @@ enum GameState {
     LOST
 }
 
-public class GameManager {
+public class    GameManager {
     /**
      * A GameState property that determines the current state of the game
      */

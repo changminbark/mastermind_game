@@ -6,7 +6,7 @@
  * Section: MWF (10:00 AM - 10:50 AM)
  * Lab Section: Thursday (10:00 AM - 11:50 AM)
  *
- * Name: Nolan Lwin
+ * Name: Nolan Lwin and Chang Min
  * Date: 10/12/23
  * Time: 12:23 PM
  *
@@ -25,20 +25,43 @@ package hw01;
 
 import java.util.Scanner;
 
-/** The CodeBreaker class is responsible for taking the user's input and storing it as the secret code. */
+/**
+ * The CodeBreaker class is responsible for taking the user's input and storing it as the secret code.
+ */
 public class CodeBreaker {
 
-    /** The secret code. */
+    /**
+     * The secret code.
+     */
     private String secretCode;
 
-    /** The constructor for the CodeBreaker class. */
+    /**
+     * The scanner to take the user's input.
+     */
+    private Scanner scanner;
+
+    /**
+     * The constructor for the CodeBreaker class.
+     */
     public CodeBreaker() {
+        scanner = new Scanner(System.in);
         secretCode = "";
     }
 
-    /** The method to take the user's input and store it as the secret code. */
+    /**
+     * The method to check if the user wants to play again.
+     */
+    public boolean askPlayAgain() {
+        String userInput = scanner.nextLine().toUpperCase();
+
+        // Check if the user input is 'Y' for yes
+        return userInput.equals("Y");
+    }
+
+    /**
+     * The method to take the user's input and store it as the secret code.
+     */
     public String takeInput() {
-        Scanner scanner = new Scanner(System.in);
 
         // Prompt the user to enter the secret code
         boolean isDone = false;
@@ -66,20 +89,10 @@ public class CodeBreaker {
         return secretCode;
     }
 
-    /** The method to get the secret code. */
+    /**
+     * The method to get the secret code.
+     */
     public String getSecretCode() {
         return secretCode;
     }
-
-//    /** The method to set the secret code. */
-//    public static void main(String[] args) {
-//        CodeBreaker codeBreaker = new CodeBreaker();
-//
-//        System.out.println("Welcome to CodeBreaker!");
-//        System.out.println("Enter a 4-digit secret code:");
-//
-//        // Take user input and set the secret code
-//        String secretCode = codeBreaker.takeInput();
-//        System.out.println("Secret code set: " + secretCode);
-//    }
 }
