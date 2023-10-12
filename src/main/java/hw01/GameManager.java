@@ -42,10 +42,8 @@ public class GameManager {
 
     /**
      * Main function that runs/simulates the MasterMind game
-     * @param args - Default main parameters
      */
-    public static void main(String[] args) {
-        // NEED TO SET UP ALL OBJECTS (LIKE BOARD, CODEMAKER, CODEBREAKER)
-        // NEED TO USE GAMESTATE TO CONTROL FLOW OF CODE
+    public void run(){
+
     }
 }
