@@ -3,7 +3,7 @@
  * Fall 2023
  * Instructor: Prof. Joshua Stough
  *
- * Name: Chang Min Bark
+ * Name: Nolan Lwin and Chang Min
  * Section: 02
  * Date: 10/10/2023
  * Time: 6:17 PM
@@ -12,12 +12,16 @@
  * Package: hw01
  * Class: GameManager
  *
- * Description:
+ * Description: A class that manages the game
  *
  * ****************************************
  */
+
 package hw01;
 
+/**
+ * An enum that represents the state of the game
+ */
 enum GameState {
     NOT_READY,
     READY,
@@ -26,7 +30,10 @@ enum GameState {
     LOST
 }
 
-public class    GameManager {
+/**
+ * A class that manages the game
+ */
+public class GameManager {
     /**
      * A GameState property that determines the current state of the game
      */

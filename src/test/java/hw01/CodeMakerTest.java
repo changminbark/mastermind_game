@@ -1,3 +1,23 @@
+/* *****************************************
+ * CSCI 205 - Software Engineering and Design
+ * Fall 2023
+ * Instructor: Prof. Joshua Stough
+ *
+ * Section: MWF (10:00 AM - 10:50 AM)
+ * Lab Section: Thursday (10:00 AM - 11:50 AM)
+ *
+ * Name: Nolan Lwin and Chang Min
+ * Date: 10/12/23
+ * Time: 3:50 PM
+ *
+ * Project: csci205_hw
+ * Package: hw01
+ * Class: CodeMakerTest
+ *
+ * Description: The CodeMakerTest class is responsible for testing the CodeMaker class.
+ * ****************************************
+ */
+
 package hw01;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -5,10 +25,19 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The CodeMakerTest class is responsible for testing the CodeMaker class.
+ */
 class CodeMakerTest {
 
+    /**
+     * The CodeMaker object to be tested
+     */
     CodeMaker testCodeMaker;
 
+    /**
+     * Sets up the CodeMaker object to be tested
+     */
     @BeforeEach
     void setUp() {
         testCodeMaker = new CodeMaker();

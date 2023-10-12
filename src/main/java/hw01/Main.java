@@ -3,7 +3,7 @@
  * Fall 2023
  * Instructor: Prof. Joshua Stough
  *
- * Name: Chang Min Bark
+ * Name: Nolan Lwin and Chang Min
  * Section: 02
  * Date: 10/11/2023
  * Time: 10:26 AM
@@ -12,12 +12,16 @@
  * Package: hw01
  * Class: Main
  *
- * Description:
+ * Description: A class that runs the MasterMind game
  *
  * ****************************************
  */
+
 package hw01;
 
+/**
+ * A class that runs the MasterMind game
+ */
 public class Main {
 
     /**

@@ -16,7 +16,7 @@
  *
  * Lab Assignment: Lab
  *
- * Description:
+ * Description: The class that is responsible for taking the user's input and storing it as the secret code.
  *
  * ****************************************
  */

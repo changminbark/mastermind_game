@@ -32,10 +32,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /** The CodeBreakerTest class is responsible for testing the CodeBreaker class. */
 class CodeBreakerTest {
 
+    /** Sets up the CodeBreaker object to be tested */
     @BeforeEach
     void setUp() {
     }
 
+    /** Tears down the CodeBreaker object to be tested */
     @AfterEach
     void tearDown() {
     }
