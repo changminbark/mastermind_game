@@ -71,6 +71,30 @@ public class CodeMaker {
         String[] codeStrArr = this.secretCode.split("(?!^)");
         String scorePegMessage = "";
 
+        int corrPosCorrNum = getCorrPosCorrNum(guessStrArr, codeStrArr);
+
+        int corrNumNotPos = getCorrNumNotPos(guessStrArr, codeStrArr, corrPosCorrNum);
+
+        // Constructing the Scoring Peg Message
+        for (int i = 0; i < corrPosCorrNum; i++) {
+            scorePegMessage += "*";
+        }
+        for (int i = 0; i < corrNumNotPos; i++) {
+            scorePegMessage += "+";
+        }
+        for (int i = 0; i < 4 - (corrPosCorrNum + corrNumNotPos); i++) {
+            scorePegMessage += "-";
+        }
+        return scorePegMessage;
+    }
+
+    /**
+     * Returns the number of pegs that are in the correct position and number/color
+     * @param guessStrArr The array containing the guess string's characters
+     * @param codeStrArr The array containing the code string's characters
+     * @return The number of pegs that are in the correct position and number/color
+     */
+    public static int getCorrPosCorrNum(String[] guessStrArr, String[] codeStrArr) {
         // Tracking number of pegs that are the right color and in the right position
         int corrPosCorrNum = 0;
         for (int i = 0; i < guessStrArr.length; i++) {
@@ -78,7 +102,17 @@ public class CodeMaker {
                 corrPosCorrNum += 1;
             }
         }
+        return corrPosCorrNum;
+    }
 
+    /**
+     * Returns the number of pegs that are the correct number/color
+     * @param guessStrArr The array containing the guess string's characters
+     * @param codeStrArr The array containing the code string's characters
+     * @param corrPosCorrNum The number of pegs that are in the correct position and number/color
+     * @return The number of pegs that are the correct number/color
+     */
+    public static int getCorrNumNotPos(String[] guessStrArr, String[] codeStrArr, int corrPosCorrNum) {
         // Tracking number of pegs that are right color but in the wrong position
         int corrNumNotPos = 0;
         // Initializing the hashmap for the guess
@@ -107,18 +141,7 @@ public class CodeMaker {
         }
         // Need to take into account pegs that are in correct position and number to not double count
         corrNumNotPos -= corrPosCorrNum;
-
-        // Constructing the Scoring Peg Message
-        for (int i = 0; i < corrPosCorrNum; i++) {
-            scorePegMessage += "*";
-        }
-        for (int i = 0; i < corrNumNotPos; i++) {
-            scorePegMessage += "+";
-        }
-        for (int i = 0; i < 4 - (corrPosCorrNum + corrNumNotPos); i++) {
-            scorePegMessage += "-";
-        }
-        return scorePegMessage;
+        return corrNumNotPos;
     }
 
     public String getSecretCode() {
