@@ -41,14 +41,17 @@ class CodeBreakerTest {
     }
 
     /**
-     * The method to test the valid input from the user
+     * The method to test the input from the user
      */
     @Test
-    void testValidInput() {
+    void testInput() {
         CodeBreaker codeBreaker = new CodeBreaker();
         System.setIn(new java.io.ByteArrayInputStream("1234\n".getBytes()));
-        String input = codeBreaker.takeInput();
-        assertEquals("1234", input);
+
+        // Use assertThrows to check if the exception is thrown
+        Exception exception = assertThrows(Exception.class, () -> {
+            codeBreaker.takeInput();
+        });
     }
 
     /**

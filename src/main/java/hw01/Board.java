@@ -21,6 +21,8 @@
 
 package hw01;
 
+import java.util.Scanner;
+
 /**
  * The Board class is responsible for displaying the current state of the game.
  * It displays the current guess, the current scoring, and the number of remaining guesses.
@@ -30,11 +32,6 @@ package hw01;
 public class Board {
 
     /**
-     * The current guess pegs.
-     */
-    private String currentGuessPegs;
-
-    /**
      * The current scoring pegs.
      */
     private String currentScoringPegs;
@@ -42,12 +39,22 @@ public class Board {
     /**
      * The number of remaining guesses.
      */
-    private int remainingGuesses;
+    int remainingGuesses;
 
     /**
      * The secret code.
      */
     private String secretCode;
+
+    /**
+     * The CodeBreaker object containing the secret code.
+     */
+    private CodeBreaker codeBreaker;
+
+    /**
+     * The scanner to take the user's input.
+     */
+    private Scanner scanner;
 
     /**
      * The constructor for the Board class.
@@ -56,7 +63,6 @@ public class Board {
      */
     public Board(CodeBreaker codeBreaker) {
         this.secretCode = codeBreaker.getSecretCode();
-        currentGuessPegs = "";
         currentScoringPegs = "";
         remainingGuesses = 12;
     }
@@ -65,17 +71,8 @@ public class Board {
      * Clear the board.
      */
     public void clearBoard() {
-        currentGuessPegs = "";
         currentScoringPegs = "";
         remainingGuesses = 12;
-    }
-
-    /**
-     * Place the guess pegs.
-     * @param codeGuess
-     */
-    public void placeGuessPegs(String codeGuess) {
-        currentGuessPegs = codeGuess;
     }
 
     /**
@@ -93,7 +90,7 @@ public class Board {
     public void displayBoard() {
         System.out.println("Guess my code, using numbers between 1 and 6. You have " + remainingGuesses + " guesses.");
         System.out.println("Guess " + (12 - remainingGuesses) + ": " + secretCode);
-        System.out.println(currentGuessPegs + " --> " + currentScoringPegs + " Try again. " + remainingGuesses + " guesses left.");
+        System.out.println(secretCode + " --> " + currentScoringPegs + " Try again. " + remainingGuesses + " guesses left.");
     }
 
     /**
@@ -101,16 +98,18 @@ public class Board {
      * @param moves
      */
     public void displayWinningMessage(int moves) {
-        System.out.println(currentGuessPegs + " --> " + currentScoringPegs + " YOU WON! You guessed the code in " + moves + " moves!");
+        System.out.println(secretCode + " --> " + currentScoringPegs + " YOU WON! You guessed the code in " + moves + " moves!");
         System.out.print("Would you like to play again? [Y/N]: ");
+        codeBreaker.askPlayAgain();
     }
 
     /**
      * Display the losing message.
      */
     public void displayLosingMessage() {
-        System.out.println("You lost! The code was " + currentGuessPegs);
+        System.out.println("You lost! The code was " + secretCode + "!");
         System.out.print("Would you like to play again? [Y/N]: ");
+        codeBreaker.askPlayAgain();
     }
 
     /**
