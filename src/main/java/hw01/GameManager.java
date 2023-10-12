@@ -32,6 +32,12 @@ public class GameManager {
      */
     private GameState state;
 
+    private Board board;
+
+    private CodeMaker codemaker;
+
+    private CodeBreaker codebreaker;
+
 
     /**
      * A GameManager class constructor that initializes the state as NOT_READY
