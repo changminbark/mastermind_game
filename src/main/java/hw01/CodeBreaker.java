@@ -70,4 +70,16 @@ public class CodeBreaker {
     public String getSecretCode() {
         return secretCode;
     }
+
+//    /** The method to set the secret code. */
+//    public static void main(String[] args) {
+//        CodeBreaker codeBreaker = new CodeBreaker();
+//
+//        System.out.println("Welcome to CodeBreaker!");
+//        System.out.println("Enter a 4-digit secret code:");
+//
+//        // Take user input and set the secret code
+//        String secretCode = codeBreaker.takeInput();
+//        System.out.println("Secret code set: " + secretCode);
+//    }
 }
