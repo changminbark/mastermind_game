@@ -59,8 +59,8 @@ public class CodeBreaker {
         String input = "";
         boolean isDone = false;
 
-        // Prompt the user to enter the secret code
-        while (!isDone) {
+        // Prompt the user to enter the guess code
+        while (!isDone && scanner.hasNextLine()) {
             System.out.println("Guess " + attempt + ": ");
             try {
                 input = scanner.nextLine();
@@ -101,6 +101,7 @@ public class CodeBreaker {
         return guessPegs;
     }
 
+//    /** Main method for testing purposes */
 //    public static void main(String[] args) {
 //        CodeBreaker codeBreaker = new CodeBreaker();
 //
