@@ -28,11 +28,8 @@ public class Main {
      * The main function to be run
      * @param args default main parameters
      */
-    public static void main(String[] args) throws InvalidInputException {
+    public static void main(String[] args) {
         GameManager game = new GameManager();
         game.run();
-        GameManager mastermind = new GameManager();
-        // NEED TO SET UP ALL OBJECTS (LIKE BOARD, CODEMAKER, CODEBREAKER)
-        // NEED TO USE GAMESTATE TO CONTROL FLOW OF CODE
     }
 }

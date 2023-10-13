@@ -32,6 +32,7 @@ public class CodeBreaker {
 
 
 
+
     private int attempt;
 
     /**
@@ -56,20 +57,21 @@ public class CodeBreaker {
     /**
      * The method to take the user's input and store it as the guess code.
      */
-    public String takeInput() throws InvalidInputException {
+    public String takeInput() {
         Scanner scanner = new Scanner(System.in);
         String input = "";
         boolean isDone = false;
 
         System.out.println("Guess " + attempt + ": ");
+        System.out.println("test" + scanner.hasNextLine());
         // Prompt the user to enter the secret code
-        while (!isDone && scanner.hasNextLine()) {
-            try {
+        while (!isDone) {
+            if (scanner.hasNextLine()) {
                 input = scanner.nextLine();
 
                 // Check if the input is valid
                 if (input.length() != 4) {
-                    throw new InvalidInputException("Invalid input. Please enter a 4-digit code.");
+                    System.out.println("Invalid input. Please enter a 4-digit code.");
                 } else {
                     boolean isValid = true;
                     for (char digit : input.toCharArray()) {
@@ -84,20 +86,20 @@ public class CodeBreaker {
                         isDone = true;
                         attempt++; // Increment attempt only if input is valid
                     } else {
-                        throw new InvalidInputException("Invalid input. Please enter a 4-digit code with digits between 1 and 6.");
+                        System.out.println("Invalid input. Please enter a 4-digit code.");
                     }
                 }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
             }
         }
-
-        scanner.close();
         return guessPegs;
     }
 
     public int getAttempt() {
         return attempt;
+    }
+
+    public void setAttempt(int attempt) {
+        this.attempt = attempt;
     }
 
 //    public static void main(String[] args) {

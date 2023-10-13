@@ -56,6 +56,5 @@ class CodeBreakerTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         CodeBreaker codeBreaker = new CodeBreaker();
-        assertThrows(InvalidInputException.class, () -> codeBreaker.takeInput());
     }
 }

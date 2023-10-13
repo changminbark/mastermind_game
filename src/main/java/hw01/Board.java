@@ -50,16 +50,6 @@ public class Board {
     private String guessPegs;
 
     /**
-     * The CodeBreaker object containing the secret code.
-     */
-    private CodeBreaker codeBreaker;
-
-    /**
-     * The scanner to take the user's input.
-     */
-    private Scanner scanner;
-
-    /**
      * The constructor for the Board class.
      * It initializes the current guess pegs, current scoring pegs, and the number of remaining guesses.
      */
@@ -76,9 +66,6 @@ public class Board {
         remainingGuesses = 12;
     }
 
-    public String getGuessPegs() {
-        return guessPegs;
-    }
 
     public void setGuessPegs(String guessPegs) {
         this.guessPegs = guessPegs;
@@ -133,8 +120,5 @@ public class Board {
         return remainingGuesses;
     }
 
-    public void setRemainingGuesses(int remainingGuesses) {
-        this.remainingGuesses = remainingGuesses;
-    }
 }
 

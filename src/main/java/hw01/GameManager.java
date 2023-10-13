@@ -58,19 +58,23 @@ public class GameManager {
     /**
      * Main function that runs/simulates the MasterMind game
      */
-    public void run() throws InvalidInputException {
+    public void run(){
+        // Setting up objects for mastermind
         codebreaker = new CodeBreaker();
         codemaker = new CodeMaker();
         boolean isDone;
         board = new Board();
         Scanner scnr = new Scanner(System.in);
 
+        // Readying player for game
         this.state = GameState.READY;
+        // Entering state/loop of playing game
         while (this.state != GameState.NOT_READY) {
             isDone = false;
             board.clearBoard();
             board.displayWelcomeMessage();
             codemaker.generateCode();
+            codebreaker.setAttempt(0);
             this.state = GameState.CHECKING;
 
             // Entering the game loop for guessing
@@ -80,6 +84,9 @@ public class GameManager {
                 board.setGuessPegs(guess);
                 String scoringPegStr = codemaker.evaluateScoringPegs();
                 board.placeScoringPegs(scoringPegStr);
+
+                // Show hints/current state of board
+                board.displayBoard();
 
                 // If the person answers correctly (WIN)
                 if (codemaker.checkGuess()){
@@ -98,15 +105,13 @@ public class GameManager {
                 if (board.getRemainingGuesses() == 0) {
                     this.state = GameState.LOST;
                     board.displayLosingMessage(codemaker.getSecretCode());
-                    if (scnr.nextLine().strip().equalsIgnoreCase("y")){
+                    if (scnr.nextLine().strip().equalsIgnoreCase("y")) {
                         this.state = GameState.READY;
                     } else {
                         this.state = GameState.NOT_READY;
                     }
                     isDone = true;
                 }
-                // Show hints/current state of board
-                board.displayBoard();
             }
         }
         board.displayGoodbyeMessage();
