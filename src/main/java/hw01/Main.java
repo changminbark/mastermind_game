@@ -28,7 +28,7 @@ public class Main {
      * The main function to be run
      * @param args default main parameters
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidInputException {
         GameManager game = new GameManager();
         game.run();
         GameManager mastermind = new GameManager();
