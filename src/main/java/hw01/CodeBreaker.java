@@ -30,6 +30,8 @@ import java.util.Scanner;
  */
 public class CodeBreaker {
 
+
+
     private int attempt;
 
     /**
@@ -59,9 +61,9 @@ public class CodeBreaker {
         String input = "";
         boolean isDone = false;
 
+        System.out.println("Guess " + attempt + ": ");
         // Prompt the user to enter the secret code
-        while (!isDone) {
-            System.out.println("Guess " + attempt + ": ");
+        while (!isDone && scanner.hasNextLine()) {
             try {
                 input = scanner.nextLine();
 
@@ -94,11 +96,8 @@ public class CodeBreaker {
         return guessPegs;
     }
 
-    /**
-     * The method to get the guess code from a user.
-     */
-    public String getGuessPegs() {
-        return guessPegs;
+    public int getAttempt() {
+        return attempt;
     }
 
 //    public static void main(String[] args) {
