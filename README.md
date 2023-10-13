@@ -1,17 +1,38 @@
 # CSCI 205 - Software Engineering and Design
 Bucknell University
+
 Lewisburg, PA
 
 ### Course Info
 Instructor: Professor Stough
+
 Semester: 2023FW
 
-## Team Information
-Chang Min Bark - Class of 2026 Computer Science and Engineering
-Nolan Lwin - Class of 2026 Computer Science
+### Team Information
+Chang Min Bark - Class of 2026, Computer Science and Engineering
 
-## Project Information
-We will create a Java version of the game Mastermind, which is like Wordle.
+Nolan Lwin - Class of 2026, Computer Science
 
-## How to run it
+### Project Information
+Project Name: Mastermind
 
+Project Description: Mastermind Java Game is an engaging and interactive console-based application inspired by the classic Mastermind board game. It challenges players to test their logic and deduction skills by guessing a secret code within a limited number of attempts. 
+
+### Key Features
+
+1. Code Generation: The game generates a secret code made up of a sequence of four number pegs for the player to guess.
+
+2. Player Input: Players enter their guesses through the console, trying to crack the secret code within a specified number of attempts.
+
+3. Feedback System: After each guess, the game provides feedback to the player, indicating how accurate their guess was. Feedback typically consists of clues, indicating correct pegs in the correct position (represented as *) and correct pegs in the wrong position (represented as +).
+
+4. Limited Attempts: Players have a limited number of attempts (up to 12 attempts) to guess the correct code, adding an element of strategy and urgency to the gameplay.
+
+### How to run it
+
+1. Clone the repository to your local machine.
+2. Open the project in your IDE of choice.
+3. Run the `Main.java` file via this directory: `./src/main/java/hw01/Main`.
+4. Follow the instructions in the console to play the game.
+5. Enjoy!
+6. (Optional) To run the JUnit tests, navigate to the `./src/test/java/hw01` directory and run `CodeBreaker.java` and `CodeMaker.java` files.
