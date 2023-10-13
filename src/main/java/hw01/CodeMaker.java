@@ -3,7 +3,7 @@
  * Fall 2023
  * Instructor: Prof. Joshua Stough
  *
- * Name: Chang Min Bark
+ * Name: Nolan Lwin and Chang Min
  * Section: 02
  * Date: 10/11/2023
  * Time: 10:29 AM
@@ -12,7 +12,7 @@
  * Package: hw01
  * Class: CodeMaker
  *
- * Description:
+ * Description: The class checks the current guess and generates a scoring peg message
  *
  * ****************************************
  */
@@ -21,11 +21,24 @@ package hw01;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * The class checks the current guess and generates a scoring peg message
+ */
 public class CodeMaker {
 
-
+    /**
+     * The secret code that the codebreaker is trying to guess
+     */
     private String secretCode;
+
+    /**
+     * The current guess that the codebreaker has made
+     */
     private String currentGuess;
+
+    /**
+     * The random object used to generate the secret code
+     */
     private Random rand = new Random();
 
     /**
@@ -144,18 +157,34 @@ public class CodeMaker {
         return corrNumNotPos;
     }
 
+    /**
+     * Getter for the secret code
+     * @return The secret code
+     */
     public String getSecretCode() {
         return secretCode;
     }
 
+    /**
+     * Setter for the secret code
+     * @param secretCode The secret code
+     */
     public void setSecretCode(String secretCode) {
         this.secretCode = secretCode;
     }
 
+    /**
+     * Getter for the current guess
+     * @return The current guess
+     */
     public String getCurrentGuess() {
         return currentGuess;
     }
 
+    /**
+     * Setter for the current guess
+     * @param currentGuess The current guess
+     */
     public void setCurrentGuess(String currentGuess) {
         this.currentGuess = currentGuess;
     }

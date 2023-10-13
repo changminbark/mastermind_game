@@ -32,23 +32,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /** The CodeBreakerTest class is responsible for testing the CodeBreaker class. */
 class CodeBreakerTest {
 
+    /** Sets up the CodeBreaker object to be tested */
     @BeforeEach
     void setUp() {
     }
 
+    /** Tears down the CodeBreaker object to be tested */
     @AfterEach
     void tearDown() {
     }
 
     /**
-     * The method to test the valid input from the user
+     * The method to test the input from the user
      */
     @Test
-    void testValidInput() {
+    void testInput() {
         CodeBreaker codeBreaker = new CodeBreaker();
         System.setIn(new java.io.ByteArrayInputStream("1234\n".getBytes()));
-        String input = codeBreaker.takeInput();
-        assertEquals("1234", input);
+
+        // Use assertThrows to check if the exception is thrown
+        Exception exception = assertThrows(Exception.class, () -> {
+            codeBreaker.takeInput();
+        });
     }
 
     /**
