@@ -19,6 +19,8 @@
 
 package hw01;
 
+import java.util.Scanner;
+
 /**
  * An enum that represents the state of the game
  */
@@ -57,6 +59,22 @@ public class GameManager {
      * Main function that runs/simulates the MasterMind game
      */
     public void run(){
+        codebreaker = new CodeBreaker();
+        codemaker = new CodeMaker();
+        boolean isDone;
+        board = new Board();
+        Scanner scnr = new Scanner(System.in);
+
+        this.state = GameState.READY;
+        while (this.state != GameState.NOT_READY) {
+            isDone = false;
+            board.clearBoard();
+            System.out.println("Guess my code, using numbers between 1 and 6. You have 12 guesses");
+            while (!isDone) {
+
+                if (board.)
+            }
+        }
 
     }
 }
