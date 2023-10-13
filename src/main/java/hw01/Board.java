@@ -62,7 +62,7 @@ public class Board {
      * @param codeBreaker The CodeBreaker object containing the secret code.
      */
     public Board(CodeBreaker codeBreaker) {
-        this.secretCode = codeBreaker.getSecretCode();
+        this.secretCode = codeBreaker.getGuessPegs();
         currentScoringPegs = "";
         remainingGuesses = 12;
     }
@@ -84,12 +84,15 @@ public class Board {
         remainingGuesses--;
     }
 
+    public void displayWelcomeMessage() {
+        System.out.println("Welcome to Mastermind!");
+        System.out.println("Guess my code, using numbers between 1 and 6. You have " + remainingGuesses + " guesses.");
+    }
+
     /**
      * Display the board.
      */
     public void displayBoard() {
-        System.out.println("Guess my code, using numbers between 1 and 6. You have " + remainingGuesses + " guesses.");
-        System.out.println("Guess " + (12 - remainingGuesses) + ": " + secretCode);
         System.out.println(secretCode + " --> " + currentScoringPegs + " Try again. " + remainingGuesses + " guesses left.");
     }
 
@@ -100,7 +103,6 @@ public class Board {
     public void displayWinningMessage(int moves) {
         System.out.println(secretCode + " --> " + currentScoringPegs + " YOU WON! You guessed the code in " + moves + " moves!");
         System.out.print("Would you like to play again? [Y/N]: ");
-        codeBreaker.askPlayAgain();
     }
 
     /**
@@ -109,7 +111,6 @@ public class Board {
     public void displayLosingMessage() {
         System.out.println("You lost! The code was " + secretCode + "!");
         System.out.print("Would you like to play again? [Y/N]: ");
-        codeBreaker.askPlayAgain();
     }
 
     /**
