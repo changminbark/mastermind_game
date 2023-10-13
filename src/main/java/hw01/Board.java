@@ -36,13 +36,10 @@ public class Board {
      */
     private String currentScoringPegs;
 
-
-
     /**
      * The number of remaining guesses.
      */
     int remainingGuesses;
-
 
     /**
      * The secret code.
@@ -66,7 +63,10 @@ public class Board {
         remainingGuesses = 12;
     }
 
-
+    /**
+     * Set the guess pegs.
+     * @param guessPegs
+     */
     public void setGuessPegs(String guessPegs) {
         this.guessPegs = guessPegs;
     }
@@ -80,6 +80,9 @@ public class Board {
         remainingGuesses--;
     }
 
+    /**
+     * Display the welcome message.
+     */
     public void displayWelcomeMessage() {
         System.out.println("Welcome to Mastermind!");
         System.out.println("Guess my code, using numbers between 1 and 6. You have " + remainingGuesses + " guesses.");
@@ -116,9 +119,11 @@ public class Board {
         System.out.println("Goodbye!");
     }
 
+    /**
+     * Get the remaining guesses.
+     */
     public int getRemainingGuesses() {
         return remainingGuesses;
     }
 
 }
-

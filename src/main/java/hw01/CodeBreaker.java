@@ -30,9 +30,9 @@ import java.util.Scanner;
  */
 public class CodeBreaker {
 
-
-
-
+    /**
+     * The number of attempts the user has made.
+     */
     private int attempt;
 
     /**
@@ -41,15 +41,9 @@ public class CodeBreaker {
     private String guessPegs;
 
     /**
-     * The scanner to take the user's input.
-     */
-    private Scanner scanner;
-
-    /**
      * The constructor for the CodeBreaker class.
      */
     public CodeBreaker() {
-        scanner = new Scanner(System.in);
         guessPegs = "";
         attempt = 1;
     }
@@ -63,7 +57,7 @@ public class CodeBreaker {
         boolean isDone = false;
 
         System.out.println("Guess " + attempt + ": ");
-        System.out.println("test" + scanner.hasNextLine());
+
         // Prompt the user to enter the secret code
         while (!isDone) {
             if (scanner.hasNextLine()) {
@@ -94,25 +88,17 @@ public class CodeBreaker {
         return guessPegs;
     }
 
+    /**
+     * The method to get the number of attempts the user has made.
+     */
     public int getAttempt() {
         return attempt;
     }
 
+    /**
+     * The method to set the number of attempts the user has made.
+     */
     public void setAttempt(int attempt) {
         this.attempt = attempt;
     }
-
-//    public static void main(String[] args) {
-//        CodeBreaker codeBreaker = new CodeBreaker();
-//
-//        System.out.println("Welcome to the CodeBreaker game!");
-//        System.out.println("Enter a 4-digit secret code with digits between 1 and 6.");
-//
-//        try {
-//            String secretCode = codeBreaker.takeInput();
-//            System.out.println("Secret code accepted: " + secretCode);
-//        } catch (InvalidInputException e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
-//    }
 }

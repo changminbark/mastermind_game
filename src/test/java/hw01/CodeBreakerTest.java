@@ -25,36 +25,36 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * The CodeBreakerTest class is responsible for testing the CodeBreaker class.
+ */
 class CodeBreakerTest {
 
+    /**
+     * The method to set up the test.
+     */
     @BeforeEach
     void setUp() {
     }
 
+    /**
+     * The method to tear down the test.
+     */
     @AfterEach
     void tearDown() {
     }
 
+    /**
+     * The method to test the takeInput method.
+     */
     @Test
-    void takeInput() throws Exception {
+    void takeInput() {
+        CodeBreaker codeBreaker = new CodeBreaker();
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        CodeBreaker codeBreaker = new CodeBreaker();
         assertEquals("1234", codeBreaker.takeInput());
-    }
-
-    @Test
-    void takeInputInvalidInputException() throws Exception {
-        String input = "12345";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-        CodeBreaker codeBreaker = new CodeBreaker();
     }
 }

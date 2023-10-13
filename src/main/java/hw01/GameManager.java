@@ -41,10 +41,19 @@ public class GameManager {
      */
     private GameState state;
 
+    /**
+     * A Board property that represents the board of the game
+     */
     private Board board;
 
+    /**
+     * A CodeMaker property that represents the codemaker of the game
+     */
     private CodeMaker codemaker;
 
+    /**
+     * A CodeBreaker property that represents the codebreaker of the game
+     */
     private CodeBreaker codebreaker;
 
 
@@ -74,7 +83,7 @@ public class GameManager {
             board.clearBoard();
             board.displayWelcomeMessage();
             codemaker.generateCode();
-            codebreaker.setAttempt(0);
+            codebreaker.setAttempt(1);
             this.state = GameState.CHECKING;
 
             // Entering the game loop for guessing
