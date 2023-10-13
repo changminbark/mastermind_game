@@ -30,10 +30,12 @@ import java.util.Scanner;
  */
 public class CodeBreaker {
 
+    private int attempt;
+
     /**
-     * The secret code.
+     * The guess code from a user.
      */
-    private String secretCode;
+    private String guessPegs;
 
     /**
      * The scanner to take the user's input.
@@ -45,54 +47,71 @@ public class CodeBreaker {
      */
     public CodeBreaker() {
         scanner = new Scanner(System.in);
-        secretCode = "";
+        guessPegs = "";
+        attempt = 1;
     }
 
     /**
-     * The method to check if the user wants to play again.
+     * The method to take the user's input and store it as the guess code.
      */
-    public boolean askPlayAgain() {
-        String userInput = scanner.nextLine().toUpperCase();
-
-        // Check if the user input is 'Y' for yes
-        return userInput.equals("Y");
-    }
-
-    /**
-     * The method to take the user's input and store it as the secret code.
-     */
-    public String takeInput() {
+    public String takeInput() throws InvalidInputException {
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        boolean isDone = false;
 
         // Prompt the user to enter the secret code
-        boolean isDone = false;
         while (!isDone) {
-            String input = scanner.nextLine();
+            System.out.println("Guess " + attempt + ": ");
+            try {
+                input = scanner.nextLine();
 
-            // Check if the input is valid
-            if (input.length() != 4) {
-                System.out.println("Invalid input. Please enter a 4-digit code.");
-            }
-            // Check if the input is within the range [1-6]
-            else if (input.contains("0") || input.contains("7") || input.contains("8") || input.contains("9")) {
-                System.out.println("Invalid input. Please enter a 4-digit code.");
-            }else {
-                // Check if the input is a number
-                try {
-                    Integer.parseInt(input);
-                    secretCode = input;
-                    isDone = true;
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input. Please enter a 4-digit code.");
+                // Check if the input is valid
+                if (input.length() != 4) {
+                    throw new InvalidInputException("Invalid input. Please enter a 4-digit code.");
+                } else {
+                    boolean isValid = true;
+                    for (char digit : input.toCharArray()) {
+                        if (digit < '1' || digit > '6') {
+                            isValid = false;
+                            break;
+                        }
+                    }
+
+                    if (isValid) {
+                        guessPegs = input;
+                        isDone = true;
+                        attempt++; // Increment attempt only if input is valid
+                    } else {
+                        throw new InvalidInputException("Invalid input. Please enter a 4-digit code with digits between 1 and 6.");
+                    }
                 }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
-        return secretCode;
+
+        scanner.close();
+        return guessPegs;
     }
 
     /**
-     * The method to get the secret code.
+     * The method to get the guess code from a user.
      */
-    public String getSecretCode() {
-        return secretCode;
+    public String getGuessPegs() {
+        return guessPegs;
     }
+
+//    public static void main(String[] args) {
+//        CodeBreaker codeBreaker = new CodeBreaker();
+//
+//        System.out.println("Welcome to the CodeBreaker game!");
+//        System.out.println("Enter a 4-digit secret code with digits between 1 and 6.");
+//
+//        try {
+//            String secretCode = codeBreaker.takeInput();
+//            System.out.println("Secret code accepted: " + secretCode);
+//        } catch (InvalidInputException e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//    }
 }
