@@ -117,8 +117,8 @@ public class Board {
     /**
      * Display the losing message.
      */
-    public void displayLosingMessage() {
-        System.out.println("You lost! The code was " + guessPegs + "!");
+    public void displayLosingMessage(String secretCode) {
+        System.out.println("You lost! The code was " + secretCode + "!");
         System.out.print("Would you like to play again? [Y/N]: ");
     }
 

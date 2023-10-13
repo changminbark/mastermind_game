@@ -97,7 +97,7 @@ public class GameManager {
                 // If the person runs out of remaining guesses (LOSE)
                 if (board.getRemainingGuesses() == 0) {
                     this.state = GameState.LOST;
-                    board.displayLosingMessage();
+                    board.displayLosingMessage(codemaker.getSecretCode());
                     if (scnr.nextLine().strip().equalsIgnoreCase("y")){
                         this.state = GameState.READY;
                     } else {
