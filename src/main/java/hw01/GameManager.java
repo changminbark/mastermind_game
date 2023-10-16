@@ -52,10 +52,14 @@ public class GameManager {
     private CodeMaker codemaker;
 
     /**
-     * A CodeBreaker property that represents the codebreaker of the game
+     * A UserCodeBreaker property that represents the user of the game
      */
-    private CodeBreaker codebreaker;
+    private UserCodeBreaker usercodebreaker;
 
+    // /**
+    //  * A solver property that represents the A SPECIFIC SOLVER of the game
+    //  */
+    // private
 
     /**
      * A GameManager class constructor that initializes the state as NOT_READY
@@ -69,7 +73,7 @@ public class GameManager {
      */
     public void run(){
         // Setting up objects for mastermind
-        codebreaker = new CodeBreaker();
+        usercodebreaker = new UserCodeBreaker();
         codemaker = new CodeMaker();
         boolean isDone;
         board = new Board();
@@ -83,12 +87,12 @@ public class GameManager {
             board.clearBoard();
             board.displayWelcomeMessage();
             codemaker.generateCode();
-            codebreaker.setAttempt(1);
+            usercodebreaker.setAttempt(1);
             this.state = GameState.CHECKING;
 
             // Entering the game loop for guessing
             while (!isDone) {
-                String guess = codebreaker.takeInput();
+                String guess = usercodebreaker.takeInput();
                 codemaker.setCurrentGuess(guess);
                 board.setGuessPegs(guess);
                 String scoringPegStr = codemaker.evaluateScoringPegs();
@@ -100,7 +104,7 @@ public class GameManager {
                 // If the person answers correctly (WIN)
                 if (codemaker.checkGuess()){
                     this.state = GameState.WON;
-                    board.displayWinningMessage(codebreaker.getAttempt());
+                    board.displayWinningMessage(usercodebreaker.getAttempt());
                     if (scnr.nextLine().strip().equalsIgnoreCase("y")){
                         this.state = GameState.READY;
                     } else {

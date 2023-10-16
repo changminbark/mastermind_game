@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * The CodeBreakerTest class is responsible for testing the CodeBreaker class.
  */
-class CodeBreakerTest {
+class UserCodeBreakerTest {
 
     /**
      * The method to set up the test.
@@ -51,10 +51,10 @@ class CodeBreakerTest {
      */
     @Test
     void takeInput() {
-        CodeBreaker codeBreaker = new CodeBreaker();
+        CodeBreaker usercodebreaker = new UserCodeBreaker();
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertEquals("1234", codeBreaker.takeInput());
+        assertEquals("1234", usercodebreaker.takeInput());
     }
 }
