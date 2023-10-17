@@ -19,7 +19,7 @@
 package hw01;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 public abstract class SolverCodeBreaker extends CodeBreaker {
     /**
@@ -33,9 +33,14 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
     private int numGames;
 
     /**
+     * The time it took for the game to simulate
+     */
+    private long playTime;
+
+    /**
      * The list that represents the attempts for each game the solver made
      */
-    private List<Integer> attemptsArr;
+    private ArrayList<Integer> attemptsArr;
 
     /**
      * The default constructor for solvers
@@ -43,26 +48,58 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
     public SolverCodeBreaker() {
         super();
         numGames = 0;
-        attemptsArr = new ArrayList<>();
+        playTime = 0;
+        attemptsArr = new ArrayList<Integer>();
     }
 
-    // NEED TO WORK ON THIS MORE
+    // NEED TO WORK ON THIS?
     public abstract void analyzeRes();
+    // SHOULD I DEFINE THE TAKEINPUT FUNCTION HERE?
 
     // DEFAULT METHODS
-    public int calcAvgAttempt() {
-
+    /**
+     * Calculates the average number of turns it took to crack the code for all attempts
+     * @return the average number of turns
+     */
+    public double calcAvgAttempt() {
+        double average = this.attemptsArr.stream()
+                .mapToDouble(Integer::doubleValue)
+                .average()
+                .orElse(0.0);
+        return average;
     }
 
+    /**
+     * Finds the shortest attempt (smallest value of turns)
+     * @return the smallest value of turns
+     */
     public int shortestAttempt() {
-
+        Collections.sort(this.attemptsArr);
+        return this.attemptsArr.get(0);
     }
 
+    /**
+     * Finds the longest attempt (largest value of turns)
+     * @return the largest value of turns
+     */
     public int longestAttempt() {
-
+        Collections.sort(this.attemptsArr);
+        return this.attemptsArr.get(this.attemptsArr.size() - 1);
     }
 
-    public int recordTime() {
+    /**
+     * Starts/sets the playTime so that when the {@code recordTime()} is called, the time is correct.
+     */
+    public void startTime() {
+        this.playTime = System.nanoTime();
+    }
 
+    /**
+     * Records the time the program took to simulate the solvers.
+     * @return the time it took to simulate the solvers
+     */
+    public long recordTime() {
+        this.playTime = System.nanoTime() - this.playTime;
+        return this.playTime;
     }
 }
