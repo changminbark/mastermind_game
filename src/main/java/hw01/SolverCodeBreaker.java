@@ -41,7 +41,7 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
     /**
      * The list that represents the attempts for each game the solver made
      */
-    private ArrayList<Integer> attemptsArr;
+    ArrayList<Integer> attemptsArr;
 
     /**
      * The default constructor for solvers
