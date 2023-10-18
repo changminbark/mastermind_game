@@ -53,10 +53,6 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
         attemptsArr = new ArrayList<Integer>();
     }
 
-    // NEED TO WORK ON THIS?
-    public abstract void analyzeRes();
-    // SHOULD I DEFINE THE TAKEINPUT FUNCTION HERE?
-
     // DEFAULT METHODS
     /**
      * Calculates the average number of turns it took to crack the code for all attempts

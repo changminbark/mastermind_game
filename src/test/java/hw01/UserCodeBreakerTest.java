@@ -51,7 +51,7 @@ class UserCodeBreakerTest {
      */
     @Test
     void takeInput() {
-        CodeBreaker usercodebreaker = new UserCodeBreaker();
+        UserCodeBreaker usercodebreaker = new UserCodeBreaker();
         String input = "1234";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);

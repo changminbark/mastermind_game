@@ -48,7 +48,6 @@ public class RandomSolver extends SolverCodeBreaker {
      * @override The method to take the user's input and store it as the guess code.
      * @return The randomly generated guess code.
      */
-    @Override
     public String takeInput() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < CODE_LENGTH; i++) {
@@ -60,7 +59,6 @@ public class RandomSolver extends SolverCodeBreaker {
     /**
      * @override The method to analyze the results of the game.
      */
-    @Override
     public void analyzeRes() {
     }
 }
