@@ -3,7 +3,7 @@
  * Fall 2023
  * Instructor: Prof. Joshua Stough
  *
- * Name: Chang Min Bark
+ * Name: Nolan Lwin and Chang Min
  * Section: 02
  * Date: 10/16/2023
  * Time: 10:13 AM
@@ -12,10 +12,11 @@
  * Package: hw01
  * Class: UserCodeBreaker
  *
- * Description:
+ * Description: The class that represents the user as a code breaker.
  *
  * ****************************************
  */
+
 package hw01;
 
 import java.util.Scanner;

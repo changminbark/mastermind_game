@@ -16,7 +16,7 @@
  *
  * Lab Assignment: Lab
  *
- * Description: The class that is responsible for taking the user's input and storing it as the secret code.
+ * Description: The abstract class that represents the code breaker.
  *
  * ****************************************
  */
@@ -26,7 +26,7 @@ package hw01;
 import java.util.Scanner;
 
 /**
- * The CodeBreaker class is responsible for taking the user's input and storing it as the secret code.
+ * The abstract class that represents the code breaker.
  */
 public abstract class CodeBreaker {
 
