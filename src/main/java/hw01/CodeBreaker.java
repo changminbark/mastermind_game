@@ -41,9 +41,4 @@ public abstract class CodeBreaker {
     public CodeBreaker() {
         guessPegs = "";
     }
-
-    /**
-     * The method to take the user's input and store it as the guess code.
-     */
-    public abstract String takeInput();
 }

@@ -51,6 +51,8 @@ public class GameManager {
      */
     private CodeMaker codemaker;
 
+    private CodeMaker minimaxcodemaker;
+
     /**
      * A UserCodeBreaker property that represents the user of the game
      */
@@ -71,7 +73,7 @@ public class GameManager {
     /**
      * Main function that runs/simulates the MasterMind game
      */
-    public void run(){
+    public void runUser(){
         // Setting up objects for mastermind
         usercodebreaker = new UserCodeBreaker();
         codemaker = new CodeMaker();
@@ -124,6 +126,138 @@ public class GameManager {
                         this.state = GameState.NOT_READY;
                     }
                     isDone = true;
+                }
+            }
+        }
+        board.displayGoodbyeMessage();
+    }
+
+    public void runMinimax(){
+        // Setting up objects for mastermind
+        MinimaxSolver minimax = new MinimaxSolver();
+        codemaker = new CodeMaker();
+        minimaxcodemaker = new CodeMaker();
+        boolean isDone;
+        board = new Board();
+        Scanner scnr = new Scanner(System.in);
+
+        // Readying player for game
+        this.state = GameState.READY;
+        // Entering state/loop of playing game
+        while (this.state != GameState.NOT_READY) {
+            isDone = false;
+            board.clearBoard();
+            board.displayWelcomeMessage();
+            codemaker.generateCode();
+            this.state = GameState.CHECKING;
+            System.out.println(codemaker.getSecretCode());
+
+            // Entering the game loop for guessing
+            while (!isDone) {
+                String guess = minimax.takeInput(minimaxcodemaker);
+                codemaker.setCurrentGuess(guess);
+                board.setGuessPegs(guess);
+                String scoringPegStr = codemaker.evaluateScoringPegs();
+                minimaxcodemaker.setSecretCode(guess);
+                minimax.removePegCombinations(scoringPegStr, minimaxcodemaker);
+                board.placeScoringPegs(scoringPegStr);
+
+                // Show hints/current state of board
+                board.displayBoard();
+
+                // If the person answers correctly (WIN)
+                if (codemaker.checkGuess()){
+                    this.state = GameState.NOT_READY;
+                    isDone = true;
+                    continue;
+                }
+            }
+        }
+        board.displayGoodbyeMessage();
+    }
+
+    public void runRandom(){
+        // Setting up objects for mastermind
+        MinimaxSolver minimax = new MinimaxSolver();
+        codemaker = new CodeMaker();
+        minimaxcodemaker = new CodeMaker();
+        boolean isDone;
+        board = new Board();
+        Scanner scnr = new Scanner(System.in);
+
+        // Readying player for game
+        this.state = GameState.READY;
+        // Entering state/loop of playing game
+        while (this.state != GameState.NOT_READY) {
+            isDone = false;
+            board.clearBoard();
+            board.displayWelcomeMessage();
+            codemaker.generateCode();
+            this.state = GameState.CHECKING;
+            System.out.println(codemaker.getSecretCode());
+
+            // Entering the game loop for guessing
+            while (!isDone) {
+                String guess = minimax.takeInput(minimaxcodemaker);
+                codemaker.setCurrentGuess(guess);
+                board.setGuessPegs(guess);
+                String scoringPegStr = codemaker.evaluateScoringPegs();
+                minimaxcodemaker.setSecretCode(guess);
+                minimax.removePegCombinations(scoringPegStr, minimaxcodemaker);
+                board.placeScoringPegs(scoringPegStr);
+
+                // Show hints/current state of board
+                board.displayBoard();
+
+                // If the person answers correctly (WIN)
+                if (codemaker.checkGuess()){
+                    this.state = GameState.NOT_READY;
+                    isDone = true;
+                    continue;
+                }
+            }
+        }
+        board.displayGoodbyeMessage();
+    }
+
+    public void runGenetic(){
+        // Setting up objects for mastermind
+        MinimaxSolver minimax = new MinimaxSolver();
+        codemaker = new CodeMaker();
+        minimaxcodemaker = new CodeMaker();
+        boolean isDone;
+        board = new Board();
+        Scanner scnr = new Scanner(System.in);
+
+        // Readying player for game
+        this.state = GameState.READY;
+        // Entering state/loop of playing game
+        while (this.state != GameState.NOT_READY) {
+            isDone = false;
+            board.clearBoard();
+            board.displayWelcomeMessage();
+            codemaker.generateCode();
+            this.state = GameState.CHECKING;
+            System.out.println(codemaker.getSecretCode());
+
+            // Entering the game loop for guessing
+            while (!isDone) {
+                String guess = minimax.takeInput(minimaxcodemaker);
+                codemaker.setCurrentGuess(guess);
+                board.setGuessPegs(guess);
+                String scoringPegStr = codemaker.evaluateScoringPegs();
+                minimaxcodemaker.setSecretCode(guess);
+                minimax.removePegCombinations(scoringPegStr, minimaxcodemaker);
+                board.placeScoringPegs(scoringPegStr);
+
+                // Show hints/current state of board
+                board.displayBoard();
+
+                // If the person answers correctly (WIN)
+                if (codemaker.checkGuess()){
+                    this.state = GameState.NOT_READY;
+                    isDone = true;
+                    continue;
                 }
             }
         }
