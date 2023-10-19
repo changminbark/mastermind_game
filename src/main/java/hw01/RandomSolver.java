@@ -44,6 +44,11 @@ public class RandomSolver extends SolverCodeBreaker {
      */
     private Random random = new Random();
 
+    public RandomSolver() {
+        super();
+        setSolverType("RANDOM SOLVER");
+    }
+
     /**
      * @override The method to take the user's input and store it as the guess code.
      * @return The randomly generated guess code.

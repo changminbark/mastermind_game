@@ -19,6 +19,7 @@
 
 package hw01;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -29,26 +30,26 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
     private String guessPegs;
 
     /**
-     * The number of games the solver simulated/played
-     */
-    private int numGames;
-
-    /**
      * The time it took for the game to simulate
      */
-    private long playTime;
+    private double playTime;
 
     /**
      * The list that represents the attempts for each game the solver made
      */
     private ArrayList<Integer> attemptsArr;
 
+
+    /**
+     * A string that represents the solver type
+     */
+    private String solverType;
+
     /**
      * The default constructor for solvers
      */
     public SolverCodeBreaker() {
         super();
-        numGames = 0;
         playTime = 0;
         attemptsArr = new ArrayList<Integer>();
     }
@@ -59,12 +60,13 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
      * Calculates the average number of turns it took to crack the code for all attempts
      * @return the average number of turns
      */
-    public double calcAvgAttempt() {
+    public String calcAvgAttempt() {
+        DecimalFormat df = new DecimalFormat("0.###");
         double average = this.attemptsArr.stream()
                 .mapToDouble(Integer::doubleValue)
                 .average()
                 .orElse(0.0);
-        return average;
+        return df.format(average);
     }
 
     /**
@@ -96,8 +98,40 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
      * Records the time the program took to simulate the solvers.
      * @return the time it took to simulate the solvers
      */
-    public long recordTime() {
+    public void recordTime() {
         this.playTime = System.nanoTime() - this.playTime;
-        return this.playTime;
+    }
+
+    /**
+     * A method that adds the number of attempts for a given run to the attempts array
+     * @param attempts the number of turns that took for a run to complete
+     */
+    public void addAttempt(int attempts) {
+        this.attemptsArr.add(attempts);
+    }
+
+    /**
+     * Getter for solvertype
+     * @return a String for solver type
+     */
+    public String getSolverType() {
+        return solverType;
+    }
+
+    /**
+     * Setter for solvertype
+     * @param solverType the string for solver type
+     */
+    public void setSolverType(String solverType) {
+        this.solverType = solverType;
+    }
+
+    /**
+     * Getter for playtime
+     * @return A string that represents playtime
+     */
+    public String getPlayTime() {
+        DecimalFormat df = new DecimalFormat("0.###");
+        return df.format(this.playTime/ 1000000000.0);
     }
 }

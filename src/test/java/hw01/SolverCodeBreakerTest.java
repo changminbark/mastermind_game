@@ -46,14 +46,6 @@ class SolverCodeBreakerTest {
     public void setUp() {
         // This is a stubbed method for testing purposes.
         solver = new SolverCodeBreaker() {
-            @Override
-            public void analyzeRes() {
-            }
-
-            @Override
-            public String takeInput() {
-                return null;
-            }
         };
     }
 
@@ -63,8 +55,10 @@ class SolverCodeBreakerTest {
     @Test
     public void testCalcAvgAttempt() {
         ArrayList<Integer> attempts = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
-        solver.attemptsArr.addAll(attempts);
-        assertEquals(3.5, solver.calcAvgAttempt(), "Average should be correct");
+        for (int attempt : attempts) {
+            solver.addAttempt(attempt);
+        }
+        assertEquals("3.5", solver.calcAvgAttempt(), "Average should be correct");
     }
 
     /**
@@ -73,7 +67,9 @@ class SolverCodeBreakerTest {
     @Test
     public void testShortestAttempt() {
         ArrayList<Integer> attempts = new ArrayList<>(Arrays.asList(2, 3, 1, 5));
-        solver.attemptsArr.addAll(attempts);
+        for (int attempt : attempts) {
+            solver.addAttempt(attempt);
+        }
         assertEquals(1, solver.shortestAttempt(), "Shortest attempt should be correct");
     }
 
@@ -83,7 +79,9 @@ class SolverCodeBreakerTest {
     @Test
     public void testLongestAttempt() {
         ArrayList<Integer> attempts = new ArrayList<>(Arrays.asList(2, 3, 1, 5));
-        solver.attemptsArr.addAll(attempts);
+        for (int attempt : attempts) {
+            solver.addAttempt(attempt);
+        }
         assertEquals(5, solver.longestAttempt(), "Longest attempt should be correct");
     }
 
@@ -94,11 +92,13 @@ class SolverCodeBreakerTest {
     public void testTimeRecording() {
         solver.startTime();
         try {
-            Thread.sleep(100); // sleep for 100 milliseconds
+            Thread.sleep(105); // sleep for 100 milliseconds
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        long recordedTime = solver.recordTime();
-        assertTrue(recordedTime >= 100000000, "Recorded time should be at least 100 milliseconds in nanoseconds");
+        solver.recordTime();
+        String recordedTime = solver.getPlayTime();
+        double time = Double.parseDouble(recordedTime) ;
+        assertTrue(time >= 0.1, "Recorded time should be at least 100 milliseconds in seconds");
     }
 }

@@ -44,15 +44,21 @@ public class Main {
                 } else if (input.equalsIgnoreCase("user")){
                     game.runUser();
                     isCompleted = true;
-                } else if (input.equalsIgnoreCase("random")){
-                    game.runRandom();
-                    isCompleted = true;
-                } else if (input.equalsIgnoreCase("minimax")){
-                    game.runMinimax();
-                    isCompleted = true;
-                } else if (input.equalsIgnoreCase("genetic")){
-                    game.runGenetic();
-                    isCompleted = true;
+                    break;
+                }
+                System.out.println("Enter the number of games for the simulation");
+                if (scnr.hasNextLine()){
+                    int numGames = Integer.parseInt(scnr.nextLine());
+                    if (input.equalsIgnoreCase("random")){
+                        game.runRandom(numGames);
+                        isCompleted = true;
+                    } else if (input.equalsIgnoreCase("minimax")){
+                        game.runMinimax(numGames);
+                        isCompleted = true;
+                    } else if (input.equalsIgnoreCase("genetic")){
+                        game.runGenetic(numGames);
+                        isCompleted = true;
+                    }
                 }
             }
         }

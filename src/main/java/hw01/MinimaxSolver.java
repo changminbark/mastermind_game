@@ -27,15 +27,22 @@ public class MinimaxSolver extends SolverCodeBreaker{
      */
     private String guessPegs;
 
-
+    /**
+     * An arraylist representing all possible unused code combinations
+     */
     private ArrayList<String> allPossibleCombinations;
 
-
+    /**
+     * An arraylist representing all possible guesses
+     */
     private ArrayList<String> pegCombinations;
 
-
+    /**
+     * The constructor for minimax
+     */
     public MinimaxSolver() {
         super();
+        setSolverType("MINIMAX SOLVER");
         guessPegs = "1122";
         // S
         pegCombinations = getAllPossibleCombinations();
@@ -45,6 +52,25 @@ public class MinimaxSolver extends SolverCodeBreaker{
         allPossibleCombinations.remove("1122");
     }
 
+    /**
+     * A method that resets the minimax's fields
+     */
+    public void reset() {
+        guessPegs = "1122";
+        // S
+        pegCombinations = getAllPossibleCombinations();
+
+        // 1296 UNUSED CODES
+        allPossibleCombinations = getAllPossibleCombinations();
+        allPossibleCombinations.remove("1122");
+    }
+
+    /**
+     * A method that removes codes that will not produce the same result if the current guess
+     * was the secret code from pegCombinations
+     * @param result The scoring peg results from evaluating the current guess
+     * @param evaluator A dummy codemaker variable to evaluate guesses
+     */
     public void removePegCombinations(String result, CodeMaker evaluator) {
         ArrayList<String> setS = new ArrayList<>();
         for (int i = 0; i < this.pegCombinations.size(); i++) {
@@ -56,6 +82,10 @@ public class MinimaxSolver extends SolverCodeBreaker{
         this.pegCombinations = setS;
     }
 
+    /**
+     * A method that generates all possible combinations of pegs
+     * @return An array list of string with all possible combinations of pegs
+     */
     private ArrayList<String> getAllPossibleCombinations() {
         ArrayList<String> pegs = new ArrayList<>();
         for (int p1 = 1; p1 < 7; p1++) {
@@ -70,6 +100,11 @@ public class MinimaxSolver extends SolverCodeBreaker{
         return pegs;
     }
 
+    /**
+     * A method that returns a string for the codemaker to evaluate
+     * @param evaluator A dummy evaluator needed to evaluate guesses in the minimaxAlgo
+     * @return A String of the next guess chosen
+     */
     public String takeInput(CodeMaker evaluator) {
         if (this.guessPegs.equals("1122")) {
             this.guessPegs = "";
@@ -80,19 +115,30 @@ public class MinimaxSolver extends SolverCodeBreaker{
         return this.guessPegs;
     }
 
+    /**
+     * The minimax algorithm that calculates and decides what guess to choose (Knuth's Algorithm)
+     * Credits: https://github.com/NathanDuran/Mastermind-Five-Guess-Algorithm/tree/master
+     * @param evaluator A dummy codemaker object that evaluates guesses
+     * @return A string that will be used as the next guess
+     */
     public String minimaxAlgo(CodeMaker evaluator) {
+        // Initialize a sorted set that contains nothing
         TreeSet<String> guessMinScore = new TreeSet<>();
         double max = 1E10;
 
+        // For every possible unused peg combination
         for (String possibleCode : this.allPossibleCombinations) {
+            // Create a hashmap of the scores for each evaluation of unused peg and pegs
+            // from pegCombinations
             HashMap<String, Integer> score = new HashMap<>();
-            evaluator.setSecretCode(possibleCode);
 
-            // Calculate number of codes that will be eliminated from pegCombinations
+            evaluator.setSecretCode(possibleCode);
+            // Calculate number of codes that will not be eliminated from pegCombinations
             for (String remainingCode : this.pegCombinations) {
                 evaluator.setCurrentGuess(remainingCode);
                 String result = evaluator.evaluateScoringPegs();
 
+                // Adding to the hashmap the number of codes that will remain (matches resulting scoring string)
                 if (score.containsKey(result)) {
                     score.put(result, score.get(result) + 1);
                 } else {
@@ -102,6 +148,7 @@ public class MinimaxSolver extends SolverCodeBreaker{
 
             double maxScore = Collections.max(score.values());
 
+            // If a new minimum max is found, create a new set of codes with this max value
             if (maxScore < max) {
                 guessMinScore.clear();
                 guessMinScore.add(possibleCode);
@@ -111,6 +158,7 @@ public class MinimaxSolver extends SolverCodeBreaker{
             }
         }
 
+        // Select a guess that is also in set S (pegCombinations), otherwise choose the first element
         for (String guess : guessMinScore) {
             if (this.pegCombinations.contains(guess)){
                 return guess;

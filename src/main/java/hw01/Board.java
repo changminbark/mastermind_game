@@ -126,4 +126,18 @@ public class Board {
         return remainingGuesses;
     }
 
+    /**
+     * Display the simulation statistics message
+     * @param numGames Number of games run
+     * @param solver Any solving algorithm
+     */
+    public void displaySimulationMessage(int numGames, SolverCodeBreaker solver) {
+        System.out.println("RESULTS");
+        System.out.println(solver.getSolverType() + " - Statistics:");
+        System.out.println("Number of Games: " + numGames);
+        System.out.println("Average: " + solver.calcAvgAttempt());
+        System.out.println("Shortest: " + solver.shortestAttempt());
+        System.out.println("Longest: " + solver.longestAttempt());
+        System.out.println("TOTAL TIME: " + solver.getPlayTime() + " seconds");
+    }
 }
