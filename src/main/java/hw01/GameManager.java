@@ -178,9 +178,8 @@ public class GameManager {
 
     public void runRandom(){
         // Setting up objects for mastermind
-        MinimaxSolver minimax = new MinimaxSolver();
+        RandomSolver random = new RandomSolver();
         codemaker = new CodeMaker();
-        minimaxcodemaker = new CodeMaker();
         boolean isDone;
         board = new Board();
         Scanner scnr = new Scanner(System.in);
@@ -198,12 +197,10 @@ public class GameManager {
 
             // Entering the game loop for guessing
             while (!isDone) {
-                String guess = minimax.takeInput(minimaxcodemaker);
+                String guess = random.takeInput();
                 codemaker.setCurrentGuess(guess);
                 board.setGuessPegs(guess);
                 String scoringPegStr = codemaker.evaluateScoringPegs();
-                minimaxcodemaker.setSecretCode(guess);
-                minimax.removePegCombinations(scoringPegStr, minimaxcodemaker);
                 board.placeScoringPegs(scoringPegStr);
 
                 // Show hints/current state of board
