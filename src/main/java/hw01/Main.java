@@ -19,6 +19,8 @@
 
 package hw01;
 
+import java.util.Scanner;
+
 /**
  * A class that runs the MasterMind game
  */
@@ -30,6 +32,29 @@ public class Main {
      */
     public static void main(String[] args) {
         GameManager game = new GameManager();
-        game.run();
+        Scanner scnr = new Scanner(System.in);
+        boolean isCompleted = false;
+        System.out.println("Please enter a following option: user, random, minimax, genetic");
+
+        while (!isCompleted) {
+            if (scnr.hasNextLine()) {
+                String input = scnr.nextLine();
+                if (!input.equalsIgnoreCase("user") && !input.equalsIgnoreCase("random") && !input.equalsIgnoreCase("minimax") && !input.equalsIgnoreCase("genetic")) {
+                    System.out.println("Invalid input. Please try again!");
+                } else if (input.equalsIgnoreCase("user")){
+                    game.runUser();
+                    isCompleted = true;
+                } else if (input.equalsIgnoreCase("random")){
+                    game.runRandom();
+                    isCompleted = true;
+                } else if (input.equalsIgnoreCase("minimax")){
+                    game.runMinimax();
+                    isCompleted = true;
+                } else if (input.equalsIgnoreCase("genetic")){
+                    game.runGenetic();
+                    isCompleted = true;
+                }
+            }
+        }
     }
 }

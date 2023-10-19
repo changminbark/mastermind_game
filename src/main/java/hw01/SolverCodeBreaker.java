@@ -41,7 +41,7 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
     /**
      * The list that represents the attempts for each game the solver made
      */
-    ArrayList<Integer> attemptsArr;
+    private ArrayList<Integer> attemptsArr;
 
     /**
      * The default constructor for solvers
@@ -52,6 +52,7 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
         playTime = 0;
         attemptsArr = new ArrayList<Integer>();
     }
+
 
     // DEFAULT METHODS
     /**
