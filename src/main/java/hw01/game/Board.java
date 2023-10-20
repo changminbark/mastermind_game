@@ -14,14 +14,14 @@
  * Package: hw01
  * Class: Board
  *
- * Description: The Board class to show the current guess, scoring, and remaining guesses of the player.
+ * Description: The Board class to show the current guess, scoring, remaining guesses, and other statistics.
  *
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
 
-import java.util.Scanner;
+import hw01.solver.SolverCodeBreaker;
 
 /**
  * The Board class is responsible for displaying the current state of the game.
@@ -126,4 +126,18 @@ public class Board {
         return remainingGuesses;
     }
 
+    /**
+     * Display the simulation statistics message
+     * @param numGames Number of games run
+     * @param solver Any solving algorithm
+     */
+    public void displaySimulationMessage(int numGames, SolverCodeBreaker solver) {
+        System.out.println("RESULTS");
+        System.out.println(solver.getSolverType() + " - Statistics:");
+        System.out.println("Number of Games: " + numGames);
+        System.out.println("Average: " + solver.calcAvgAttempt());
+        System.out.println("Shortest: " + solver.shortestAttempt());
+        System.out.println("Longest: " + solver.longestAttempt());
+        System.out.println("TOTAL TIME: " + solver.getPlayTime() + " seconds");
+    }
 }

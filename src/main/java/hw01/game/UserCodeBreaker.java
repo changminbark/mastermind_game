@@ -7,28 +7,26 @@
  * Lab Section: Thursday (10:00 AM - 11:50 AM)
  *
  * Name: Nolan Lwin and Chang Min
- * Date: 10/12/23
- * Time: 12:23 PM
+ * Section: 02
+ * Date: 10/16/2023
+ * Time: 10:13 AM
  *
  * Project: csci205_hw
  * Package: hw01
- * Class: CodeBreaker
+ * Class: UserCodeBreaker
  *
- * Lab Assignment: Lab
- *
- * Description: The class that is responsible for taking the user's input and storing it as the secret code.
+ * Description: The class that represents the user as a code breaker.
  *
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
+
+import hw01.game.CodeBreaker;
 
 import java.util.Scanner;
 
-/**
- * The CodeBreaker class is responsible for taking the user's input and storing it as the secret code.
- */
-public class CodeBreaker {
+public class UserCodeBreaker extends CodeBreaker {
 
     /**
      * The number of attempts the user has made.
@@ -43,8 +41,8 @@ public class CodeBreaker {
     /**
      * The constructor for the CodeBreaker class.
      */
-    public CodeBreaker() {
-        guessPegs = "";
+    public UserCodeBreaker() {
+        super();
         attempt = 1;
     }
 
