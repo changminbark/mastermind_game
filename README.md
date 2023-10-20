@@ -16,7 +16,7 @@ Nolan Lwin - Class of 2026, Computer Science
 ### Project Information
 Project Name: Mastermind
 
-Project Description: Mastermind Java Game is an engaging and interactive console-based application inspired by the classic Mastermind board game. It challenges players to test their logic and deduction skills by guessing a secret code within a limited number of attempts. 
+Project Description: Mastermind Java Game is an engaging and interactive console-based application inspired by the classic Mastermind board game. It challenges players to test their logic and deduction skills by guessing a secret code within a limited number of attempts. In our latest update, we've introduced three new algorithms: random, minimax, and DFS (Depth-First Search) to enhance the gameplay experience and offer varied strategic approaches for players.
 
 ### Key Features
 
@@ -27,6 +27,12 @@ Project Description: Mastermind Java Game is an engaging and interactive console
 3. Feedback System: After each guess, the game provides feedback to the player, indicating how accurate their guess was. Feedback typically consists of clues, indicating correct pegs in the correct position (represented as *) and correct pegs in the wrong position (represented as +).
 
 4. Limited Attempts: Players have a limited number of attempts (up to 12 attempts) to guess the correct code, adding an element of strategy and urgency to the gameplay.
+
+5. Random Algorithm: The game generates a random code for the player to guess.
+
+6. Minimax Algorithm: The game generates a code based on the minimax algorithm for the player to guess.
+
+7. DFS Algorithm: The game generates a code based on the DFS algorithm for the player to guess.
 
 ### How to run it
 
