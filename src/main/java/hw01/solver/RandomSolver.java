@@ -32,12 +32,12 @@ public class RandomSolver extends SolverCodeBreaker {
      * The space of possible pegs for the code.
      * Let's assume pegs can be one of these 6 numbers.
      */
-    static final char[] POSSIBLE_PEGS = {'1', '2', '3', '4', '5', '6'};
+    private static final char[] POSSIBLE_PEGS = {'1', '2', '3', '4', '5', '6'};
 
     /**
      * The length of the code to guess.
      */
-    static final int CODE_LENGTH = 4;
+    private static final int CODE_LENGTH = 4;
 
     /**
      * Random number generator.

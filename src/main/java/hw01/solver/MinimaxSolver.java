@@ -20,8 +20,9 @@
  * ****************************************
  */
 
-package hw01.game;
+package hw01.solver;
 
+import hw01.game.CodeMaker;
 import hw01.solver.SolverCodeBreaker;
 
 import java.util.*;
