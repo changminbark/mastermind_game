@@ -34,7 +34,7 @@ public class Main {
         GameManager game = new GameManager();
         Scanner scnr = new Scanner(System.in);
         boolean isCompleted = false;
-        System.out.println("Please enter a following option: user, random, minimax, genetic, dfs");
+        System.out.println("Please enter a following option for a solver algorithm: user, random, minimax, dfs");
 
         while (!isCompleted) {
             if (scnr.hasNextLine()) {
@@ -56,6 +56,7 @@ public class Main {
                         game.runMinimax(numGames);
                         isCompleted = true;
                     }
+                    // CODE FOR GENETIC ALGORITHM THAT DOESN'T WORK
                     // else if (input.equalsIgnoreCase("genetic")){
                     //     game.runGenetic(numGames);
                     //     isCompleted = true;}
