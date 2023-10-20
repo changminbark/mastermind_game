@@ -20,7 +20,9 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.solver;
+
+import hw01.game.CodeBreaker;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

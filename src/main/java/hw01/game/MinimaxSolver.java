@@ -20,11 +20,13 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
+
+import hw01.solver.SolverCodeBreaker;
 
 import java.util.*;
 
-public class MinimaxSolver extends SolverCodeBreaker{
+public class MinimaxSolver extends SolverCodeBreaker {
 
     /**
      * The guess code that is going to be used

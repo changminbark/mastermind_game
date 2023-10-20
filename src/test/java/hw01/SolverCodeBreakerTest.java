@@ -21,6 +21,7 @@
 
 package hw01;
 
+import hw01.solver.SolverCodeBreaker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

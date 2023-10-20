@@ -19,7 +19,7 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.solver;
 
 import java.util.Random;
 

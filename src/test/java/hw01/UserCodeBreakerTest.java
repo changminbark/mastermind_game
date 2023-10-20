@@ -20,6 +20,7 @@
 
 package hw01;
 
+import hw01.game.UserCodeBreaker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

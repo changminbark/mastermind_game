@@ -19,7 +19,7 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.solver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ import java.util.Iterator;
 /**
  * The DFS Solver class to solve the Mastermind game using Depth First Search (DFS).
  */
-class DFSSolver extends SolverCodeBreaker{
+public class DFSSolver extends SolverCodeBreaker {
 
     /**
      * The list of all possible codes.

@@ -21,6 +21,7 @@
 
 package hw01;
 
+import hw01.solver.RandomSolver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

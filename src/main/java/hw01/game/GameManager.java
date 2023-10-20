@@ -17,7 +17,10 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
+
+import hw01.solver.DFSSolver;
+import hw01.solver.RandomSolver;
 
 import java.util.Scanner;
 

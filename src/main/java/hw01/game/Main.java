@@ -17,7 +17,9 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
+
+import hw01.game.GameManager;
 
 import java.util.Scanner;
 

@@ -17,7 +17,7 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
 
 import java.util.HashMap;
 import java.util.Random;

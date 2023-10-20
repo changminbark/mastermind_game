@@ -19,9 +19,9 @@
  * ****************************************
  */
 
-package hw01;
+package hw01.game;
 
-import java.util.Scanner;
+import hw01.solver.SolverCodeBreaker;
 
 /**
  * The Board class is responsible for displaying the current state of the game.
