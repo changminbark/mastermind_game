@@ -55,10 +55,11 @@ public class Main {
                     } else if (input.equalsIgnoreCase("minimax")){
                         game.runMinimax(numGames);
                         isCompleted = true;
-                    } else if (input.equalsIgnoreCase("genetic")){
-                        game.runGenetic(numGames);
-                        isCompleted = true;
-                    }else if (input.equalsIgnoreCase("dfs")) {
+                    }
+                    // else if (input.equalsIgnoreCase("genetic")){
+                    //     game.runGenetic(numGames);
+                    //     isCompleted = true;}
+                    else if (input.equalsIgnoreCase("dfs")) {
                         game.runDFS(numGames);
                         isCompleted = true;
                     }
