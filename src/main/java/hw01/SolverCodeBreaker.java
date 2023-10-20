@@ -3,6 +3,9 @@
  * Fall 2023
  * Instructor: Prof. Joshua Stough
  *
+ * Section: MWF (10:00 AM - 10:50 AM)
+ * Lab Section: Thursday (10:00 AM - 11:50 AM)
+ *
  * Name: Nolan Lwin and Chang Min
  * Section: 02
  * Date: 10/16/2023
@@ -27,7 +30,7 @@ public abstract class SolverCodeBreaker extends CodeBreaker {
     /**
      * The guess code from the solver.
      */
-    private String guessPegs;
+    String guessPegs;
 
     /**
      * The time it took for the game to simulate

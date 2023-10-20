@@ -34,12 +34,12 @@ public class Main {
         GameManager game = new GameManager();
         Scanner scnr = new Scanner(System.in);
         boolean isCompleted = false;
-        System.out.println("Please enter a following option: user, random, minimax, genetic");
+        System.out.println("Please enter a following option: user, random, minimax, genetic, dfs");
 
         while (!isCompleted) {
             if (scnr.hasNextLine()) {
                 String input = scnr.nextLine();
-                if (!input.equalsIgnoreCase("user") && !input.equalsIgnoreCase("random") && !input.equalsIgnoreCase("minimax") && !input.equalsIgnoreCase("genetic")) {
+                if (!input.equalsIgnoreCase("user") && !input.equalsIgnoreCase("random") && !input.equalsIgnoreCase("minimax") && !input.equalsIgnoreCase("genetic") && !input.equalsIgnoreCase("dfs")) {
                     System.out.println("Invalid input. Please try again!");
                 } else if (input.equalsIgnoreCase("user")){
                     game.runUser();
@@ -57,6 +57,9 @@ public class Main {
                         isCompleted = true;
                     } else if (input.equalsIgnoreCase("genetic")){
                         game.runGenetic(numGames);
+                        isCompleted = true;
+                    }else if (input.equalsIgnoreCase("dfs")) {
+                        game.runDFS(numGames);
                         isCompleted = true;
                     }
                 }

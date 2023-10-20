@@ -14,7 +14,7 @@
  * Package: hw01
  * Class: Board
  *
- * Description: The Board class to show the current guess, scoring, and remaining guesses of the player.
+ * Description: The Board class to show the current guess, scoring, remaining guesses, and other statistics.
  *
  * ****************************************
  */

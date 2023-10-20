@@ -3,7 +3,10 @@
  * Fall 2023
  * Instructor: Prof. Joshua Stough
  *
- * Name: Chang Min Bark
+ * Section: MWF (10:00 AM - 10:50 AM)
+ * Lab Section: Thursday (10:00 AM - 11:50 AM)
+ *
+ * Name: Nolan and Chang Min
  * Section: 02
  * Date: 10/17/2023
  * Time: 4:18 PM
@@ -12,10 +15,11 @@
  * Package: hw01
  * Class: MinimaxSolver
  *
- * Description:
+ * Description: A class that represents a solver that uses the minimax algorithm
  *
  * ****************************************
  */
+
 package hw01;
 
 import java.util.*;

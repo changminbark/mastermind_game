@@ -12,7 +12,7 @@
  * Package: hw01
  * Class: GameManager
  *
- * Description: A class that manages the game
+ * Description: A class that manages the Mastermind game playing modes such as user, minimax, random, genetic, and DFS algorithms.
  *
  * ****************************************
  */
@@ -51,7 +51,15 @@ public class GameManager {
      */
     private CodeMaker codemaker;
 
+    /**
+     * A specialized CodeMaker property for the minimax algorithm
+     */
     private CodeMaker minimaxcodemaker;
+
+    /**
+     * A specialized CodeMaker property for the DFS algorithm
+     */
+    private CodeMaker dfscodemaker;
 
     /**
      * A UserCodeBreaker property that represents the user of the game
@@ -265,6 +273,7 @@ public class GameManager {
 
                     // Show hints/current state of board
                     board.displayBoard();
+
                     numTurns += 1;
 
                     // If the solver answers correctly (WIN)
@@ -279,6 +288,62 @@ public class GameManager {
         }
         random.recordTime();
         board.displaySimulationMessage(numGames, random);
+        board.displayGoodbyeMessage();
+    }
+
+    /**
+     * The driver method for running the DFS algorithm
+     * @param numGames number of games to be played
+     */
+    public void runDFS(int numGames) {
+        // Setting up objects for mastermind
+        DFSSolver dfsSolver = new DFSSolver();
+        codemaker = new CodeMaker();
+        boolean isDone;
+        board = new Board();
+
+        // Readying DFS for game
+        dfsSolver.startTime();
+        for (int i = 0; i < numGames; i++) {
+            this.state = GameState.READY;
+            while (this.state != GameState.NOT_READY) {
+                int numTurns = 0;
+                isDone = false;
+                board.clearBoard();
+                codemaker.generateCode();
+                this.state = GameState.CHECKING;
+                dfscodemaker = new CodeMaker();
+
+                dfsSolver.reset();
+
+                // Entering the game loop for guessing
+                while (!isDone) {
+                    String guess = dfsSolver.takeInput();
+                    if (guess == null) {
+                        break;
+                    }
+
+                    codemaker.setCurrentGuess(guess);
+                    board.setGuessPegs(guess);
+                    String scoringPegStr = codemaker.evaluateScoringPegs();
+                    board.placeScoringPegs(scoringPegStr);
+
+                    // Show hints/current state of board
+
+                    numTurns += 1;
+
+                    // If the solver answers correctly (WIN)
+                    if (codemaker.checkGuess()) {
+                        this.state = GameState.NOT_READY;
+                        isDone = true;
+                        continue;
+                    }
+                }
+                dfsSolver.addAttempt(numTurns);
+            }
+        }
+        dfsSolver.recordTime();
+        board.displaySimulationMessage(numGames, dfsSolver);
         board.displayGoodbyeMessage();
     }
 }
